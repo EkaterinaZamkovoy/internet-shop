@@ -1,11 +1,20 @@
 <template>
   <div id="app">
     <Header />
-    <Main />
-    <Footer />
   </div>
 </template>
 
-<style lang="scss">
+<script>
+import Header from "./components/HeaderComponent.vue";
 
+export default {
+  name: "App",
+  components: {
+    Header,
+  },
+};
+</script>
+
+<style lang="scss">
+@import "./styles/global.scss";
 </style>
