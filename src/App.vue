@@ -5,10 +5,10 @@
 </template>
 
 <script>
-import Header from "./components/HeaderComponent.vue";
+import Header from './components/HeaderComponent.vue';
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
     Header,
   },
@@ -16,5 +16,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "./styles/global.scss";
+@import './styles/global.scss';
 </style>
