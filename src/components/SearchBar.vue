@@ -4,16 +4,21 @@
       :class="$style.searchBar__input"
       type="text"
       placeholder="Поиск по названию картины"
-      :v-model="searchText"
+      v-model="searchText"
       @input="onInput"
     />
-    <button :class="$style.searchBar__button" @click="onSearch">Найти</button>
+    <ButtonComponent :class="$style.searchBar__button" :onClick="onSearch"
+      >Найти</ButtonComponent
+    >
   </div>
 </template>
 
 <script>
+import ButtonComponent from './ButtonComponent.vue';
+
 export default {
   name: 'SearchInput',
+  components: { ButtonComponent },
   props: {
     searchHandler: {
       type: Function,
@@ -44,6 +49,10 @@ export default {
   align-items: center;
   max-width: 416px;
   width: 100%;
+
+  @media (max-width: 470px) {
+    max-width: 300px;
+  }
 
   &__input {
     flex: 1;

@@ -1,31 +1,36 @@
 <template>
   <div :class="$style.header">
-    <nav :class="$style.header__nav">
-      <div :class="$style.header__navLinks">
-        <a href="#">Каталог</a>
-        <a href="#">Доставка</a>
-        <a href="#">Оплата</a>
-        <a href="#">Контакты</a>
-        <a href="#">О компании</a>
-      </div>
-      <SearchBar :searchHandler="searchHandler" />
-    </nav>
+    <NavigationComponent :links="navigationLinks" />
+    <SearchBar :searchHandler="handleSearch" />
   </div>
 </template>
 
 <script>
+import NavigationComponent from './NavigationComponent.vue';
 import SearchBar from './SearchBar.vue';
 
 export default {
   name: 'HeaderComponent',
   components: {
     SearchBar,
+    NavigationComponent,
   },
   props: {
-    searchHandler: {
+    handleSearch: {
       type: Function,
       required: true,
     },
+  },
+  data() {
+    return {
+      navigationLinks: [
+        { text: 'Каталог', url: '#' },
+        { text: 'Доставка', url: '#' },
+        { text: 'Оплата', url: '#' },
+        { text: 'Контакты', url: '#' },
+        { text: 'О компании', url: '#' },
+      ],
+    };
   },
 };
 </script>
@@ -34,18 +39,23 @@ export default {
 @import '../styles/variables.scss';
 
 .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid $border-color;
   padding: 30px 200px 30px 300px;
 
-  &__nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  @media (max-width: 1400px) {
+    padding: 50px;
   }
 
-  &__navLinks {
-    display: flex;
+  @media (max-width: 1000px) {
+    flex-direction: column;
     gap: 20px;
+  }
+
+  @media (max-width: 470px) {
+    padding: 20px;
   }
 }
 </style>
